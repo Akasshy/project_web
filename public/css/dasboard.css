@@ -1,0 +1,69 @@
+/* Mengubah background default dropdown */
+
+/* Mengubah warna text dropdown */
+body{
+    scroll-behavior: smooth;
+}
+.dropdown-menu .dropdown-item {
+    color: white;
+}
+
+/* Hover effect: Mengubah background jadi hitam dan text jadi putih */
+.dropdown-menu .dropdown-item:hover {
+    background-color: white;
+    color: #7A1CAC;
+}
+
+/* Optional: Mengubah warna border dropdown jika diperlukan */
+.dropdown-menu {
+    border-left: 2px solid #7A1CAC;
+    border-right: 2px solid #7A1CAC;
+    border-bottom: 2px solid #7A1CAC;
+}
+
+/* scrol vertikal */
+.image-scroll-horizontal {
+    /* scrollbar-width: none;  */
+    display: flex;
+    overflow-x: auto; /* Mengaktifkan scroll horizontal */
+    white-space: nowrap; /* Menjaga gambar tetap di satu baris */
+    padding: 10px;
+    background-color: #f8f9fa; /* Warna background container */
+    border: 1px solid #ddd;
+    width: 100%;
+    height: 30%; /* Border untuk container */
+}
+
+
+.image-scroll-horizontal img {
+    border-radius: 5px;
+    width: 100%; /* Sudut gambar yang membulat */
+}
+
+/* card */
+.rekomendasi{
+    margin-top: -35%;
+}
+
+.scroll-container {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 10px;
+    gap: 10px;
+}
+
+.atas {
+    margin-left: 4px;
+    flex: 0 0 auto;
+    width: 176px;
+    height: 300px;
+}
+
+.atas:hover{
+    border: 3px solid #7A1CAC;
+}
+.produk:hover{
+    border: 3px solid #7A1CAC;
+}
+

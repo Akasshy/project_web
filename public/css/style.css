@@ -1,0 +1,71 @@
+body {
+    background: linear-gradient(to bottom left, #6a11cb, #2575fc);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    color: white;
+}
+
+/* Background Pudar untuk Form */
+.login-container {
+    background: rgba(255, 255, 255, 0.1); /* Putih dengan transparansi */
+    border-radius: 15px;
+    padding: 40px;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Style untuk Form */
+.login-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #fff;
+}
+
+.login-container .form-label {
+    color: #fff;
+}
+
+.login-container .form-control {
+    background: rgba(255, 255, 255, 0.3); /* Transparan pada input */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+.login-container .form-control:focus {
+    background: rgba(255, 255, 255, 0.5); /* Fokus dengan transparansi lebih tinggi */
+    box-shadow: none;
+    color: #000;
+}
+
+.login-container .btn-primary {
+    background-color: #6a11cb;
+    border: none;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.login-container .btn-primary:hover {
+    background-color:#7A1CAC;
+}
+/* modal */
+.blur-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(8px); /* Efek blur */
+    z-index: 1040; /* Posisi di bawah modal tetapi di atas konten lain */
+    display: none; /* Sembunyikan awalnya */
+}
+
+.modal.show + .blur-background {
+    display: block; /* Tampilkan blur saat modal aktif */
+}
