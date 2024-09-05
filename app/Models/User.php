@@ -39,6 +39,16 @@ class User extends Authenticatable
      *
      * @var array<string, string>
      */
+    public function produk()
+    {
+        return $this->hasMany(Produk::class, 'id_user');
+    }
+    
+    public function transaksi()
+    {
+        return $this->hasMany(Transaksi::class, 'id_user');
+    }
+    
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];

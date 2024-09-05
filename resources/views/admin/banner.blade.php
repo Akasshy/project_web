@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <strong class="card-title">Data Table</strong>   
+                    <strong class="card-title">Data Table Banner</strong>   
                 </div>
                 <a type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#productModal" href="">Tambah Banner</a>
                 <!-- Modal -->

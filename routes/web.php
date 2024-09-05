@@ -22,19 +22,25 @@ Route::get('/', function () {
 // Route::get('/tes', function () {
 //     return view('admin/product');
 // });
-Route::get('/dasad', function () {
-    return view('admin/admindas');
-});
-Route::get('/profile', function () {
-    return view('profile');
-});
+
+// Route::get('/profile', function () {
+//     return view('profile');
+// });
 Route::get('/ha', function () {
     return view('admin/edit-product');
 });
+Route::get('/tes', function () {
+    return view('transaksi');
+});
 
+Route::post('/login',[UserController::class,'login']);
+Route::post('/register',[UserController::class,'register']);
 // admin
-// Route::group(['middleware' => ['role:admin']], function () {
+Route::group(['middleware' => ['role:admin']], function () {
+
     // Route khusus admin
+    Route::get('/dasad',[AdminController::class,'dasad']);
+    Route::get('/dtusers',[AdminController::class,'user']);
     Route::get('/listproduct',[AdminController::class,'product']);
     Route::post('/add/product',[AdminController::class,'add']);
     Route::get('/delete/product/{id}',[AdminController::class,'delete']);
@@ -43,14 +49,26 @@ Route::get('/ha', function () {
     Route::get('/banner',[AdminController::class,'banner']);
     Route::post('/add/banner',[AdminController::class,'addbanner']);
     Route::get('/delete/banner/{id}',[AdminController::class,'deletebanner']);
-// });
 
-// Route::group(['middleware' => ['role:user']], function () {
+    Route::post('/add/user',[AdminController::class,'adduser']);
+    Route::get('/logout',[UserController::class,'logout']);
+    Route::get('/delete/user/{id}',[AdminController::class,'deluser']);
+
+    Route::get('/delete/transaksi/{id}',[AdminController::class,'deltransaksi']);
+    Route::get('/edit/transaksi/{id}',[AdminController::class,'edittransaksi']);
+    Route::post('/update/transaksi/{id}',[AdminController::class,'updatetransaksi']);
+
+});
+
+Route::group(['middleware' => ['role:user']], function () {
     // Route khusus user
-    Route::get('/user/profile', [UserController::class, 'profile']);
-    Route::post('/login',[UserController::class,'login']);
+    Route::get('/user/profile', [UserController::class,'profile']);
     Route::get('/home',[UserController::class,'select']);
     Route::get('/klicpr/{id}',[UserController::class,'clik']);
-// });
+    Route::get('/transaksi/{id}',[UserController::class,'transaksi']);
+    Route::post('/beli/{id}',[UserController::class,'buy']);
+    Route::get('/logout',[UserController::class,'logout']);
 
-// user
+});
+
+

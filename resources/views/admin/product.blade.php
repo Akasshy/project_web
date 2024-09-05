@@ -43,7 +43,15 @@
                             </div>
                             <div class="mb-3">
                             <label for="category" class="form-label">Kategori</label>
-                            <input type="text" class="form-control" id="category" name="kategori" required>
+                            {{-- <input type="text" class="form-control" id="category" name="kategori" required> --}}
+                            <label for="metode_pembayaran" class="form-label">Metode Pembayaran</label>
+                            <select class="form-select" id="metode_pembayaran" name="kategori">
+                                <option value="varsity">Varsity</option>
+                                <option value="hoodie">Hodie</option>
+                                <option value="denim">Denim</option>
+                                <option value="kulit">Kulit</option>
+                                <option value="boomber">Boomber</option>
+                            </select>
                             </div>
                             <div class="mb-3">
                             <label for="photo" class="form-label">Foto Produk</label>

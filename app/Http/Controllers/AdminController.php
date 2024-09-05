@@ -4,15 +4,48 @@ namespace App\Http\Controllers;
 
 use App\Models\Banner;
 use App\Models\Produk;
+use App\Models\Transaksi;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
+    public function dasad(){
+        $data['jual'] = Produk::count();
+        $data['user'] = User::count();
+        $data['transaksi'] = Transaksi::all();
+        return view('admin/admindas',$data);
+    }
+
+    // Transaki
+    public function deltransaksi(Request $request){
+        Transaksi::where('id', $request->id)->delete();
+        return redirect('/dasad');
+    }
+    
+    public function edittransaksi(Request $request){
+        $data['order'] = Transaksi::find($request->id);
+        return view('admin/edit-transaksi',$data);
+    }
+
+    public function updatetransaksi(Request $request){
+        $edit = Transaksi::where('id',$request->id)->first();
+        $edit->update([
+            
+            'status' => $request['status']
+        ]);
+        return redirect('/dasad');
+    }
   
     public function product(){
         $data['product'] = Produk::all();
         $data['jumlah'] = $data['product']->count();
         return view('admin/product',$data);        
+    }
+    public function user(){
+        $data['user'] = User::all();
+        return view('admin/users',$data);        
     }
 
    
@@ -34,6 +67,8 @@ class AdminController extends Controller
             'deskripsi' => $req->deskripsi,
             'foto_product' => $filename,
             'kategori' => $req->kategori,
+            'id_user' => auth()->user()->id
+            // 'id_user' => $req->id
         ]);
         return redirect('/listproduct');
     }
@@ -60,6 +95,10 @@ class AdminController extends Controller
                 'deskripsi' => $req['deskripsi'],
                 'foto_product' => $filename,
                 'kategori' => $req['kategori'],
+                // 'id_user' => '1'
+                'id_user' => auth()->user()->id
+
+
             ]);
         }else {
             $edit->update([
@@ -69,6 +108,7 @@ class AdminController extends Controller
                 'deskripsi' => $req['deskripsi'],
                 // 'foto_product' => $filename,
                 'kategori' => $req['kategori'],
+                'id_user' => '1'
             ]);
             
         }
@@ -92,5 +132,32 @@ class AdminController extends Controller
     public function deletebanner(Request $request){
         Banner::where('id', $request->id)->delete();
         return redirect('/banner');
-      }
+    }
+
+    // FUNGSO USER
+    public function adduser(Request $req){
+
+        // $filename ='';
+
+        // if ($req->file('foto')) {
+        //     $extfile = $req->file('foto')->getClientOriginalExtension();
+        //     $filename = time().".".$extfile;
+        //     $req->file('foto')->storeAs('foto',$filename);
+        // }
+        $filename = time().'.'.$req->foto->extension(); 
+        $req->foto->move(public_path('storage/foto_user'), $filename);
+        User::create([
+            'name' => $req->name,
+            'email' => $req->email,
+            'password' => $req->password,
+            'role' => $req->role,
+            'foto' => $filename,
+        ]);
+        return redirect('/dtusers');
+    }
+
+    public function deluser(Request $request){
+        User::where('id', $request->id)->delete();
+        return redirect('/dtusers');
+    }
 }

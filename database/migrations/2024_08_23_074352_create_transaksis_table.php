@@ -13,13 +13,16 @@ return new class extends Migration
     {
         Schema::create('transaksis', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_product');
-            $table->foreignId('id_user');
+            $table->unsignedBigInteger('id_produk');
+            $table->unsignedBigInteger('id_user');
             $table->text('alamat');
+            $table->string('nama_penerima');
             $table->string('metode_pembayaran');
             $table->timestamp('tanggal_transaksi');
             $table->text('note');
-            $table->enum('status',['packing','perjalan','selesai'])->default('packing');
+            $table->string('status')->default('packing');
+            $table->foreign('id_user')->references('id')->on('users')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreign('id_produk')->references('id')->on('produks')->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
     }

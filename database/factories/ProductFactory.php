@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Produk;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -22,6 +23,7 @@ class ProductFactory extends Factory
     {
         return [
             'name_product' => $this->faker->word(),
+            'id_user' => User::factory(),
             'stok' => $this->faker->numberBetween(1, 100),
             'deskripsi' => $this->faker->paragraph(),
             'foto_product' => $this->faker->imageUrl(640, 480, 'product', true),

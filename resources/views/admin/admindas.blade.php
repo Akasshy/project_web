@@ -1,25 +1,7 @@
 @extends('admin/template')
 @section('content')
 <div class="row">
-    <div class="col-lg-3 col-md-6">
-        <div class="card">
-            <div class="card-body">
-                <div class="stat-widget-five">
-                    <div class="stat-icon dib flat-color-1">
-                        <i class="pe-7s-cash"></i>
-                    </div>
-                    <div class="stat-content">
-                        <div class="text-left dib">
-                            <div class="">$<span class="">23569</span></div>
-                            <div class="stat-heading">Revenue</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-lg-3 col-md-6">
+    <div class="col-lg-3 col-md-6 ms-4">
         <div class="card">
             <div class="card-body">
                 <div class="stat-widget-five">
@@ -28,26 +10,8 @@
                     </div>
                     <div class="stat-content">
                         <div class="text-left dib">
-                            <div class=""><span class="">3435</span></div>
-                            <div class="stat-heading">Sales</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-lg-3 col-md-6">
-        <div class="card">
-            <div class="card-body">
-                <div class="stat-widget-five">
-                    <div class="stat-icon dib flat-color-3">
-                        <i class="pe-7s-browser"></i>
-                    </div>
-                    <div class="stat-content">
-                        <div class="text-left dib">
-                            <div class=""><span class="">349</span></div>
-                            <div class="stat-heading">Templates</div>
+                            <div class=""><span class="">{{$jual}}</span></div>
+                            <div class="stat-heading">Terjual</div>
                         </div>
                     </div>
                 </div>
@@ -64,8 +28,8 @@
                     </div>
                     <div class="stat-content">
                         <div class="text-left dib">
-                            <div class=""><span class="">2986</span></div>
-                            <div class="stat-heading">Clients</div>
+                            <div class=""><span class="">{{$user}}</span></div>
+                            <div class="stat-heading">User</div>
                         </div>
                     </div>
                 </div>
@@ -80,28 +44,46 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <strong class="card-title">Data Table</strong>
+                        <strong class="card-title">Data Table Transaksi</strong>
                     </div>
                     <div class="card-body">
                         <table id="bootstrap-data-table" class="table table-striped table-bordered">
                             <thead>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Position</th>
-                                    <th>Office</th>
-                                    <th>Salary</th>
+                                    <th>NO</th>
+                                    <th>Produk</th>
+                                    <th>Id User</th>
+                                    <th>Nama Penerima</th>
+                                    <th>Alamat</th>
+                                    <th>Metode Pembayaran</th>
+                                    <th>Status</th>
+                                    <th>Note</th>
+                                    <th>Tanggal Transaksi</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @for ($i = 0; $i <= 100; $i++)
-                                    
+                                {{-- @for ($i = 0; $i <= 100; $i++) --}}
+                                @foreach ($transaksi  as $key => $item)    
                                 <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>Edinburgh</td>
-                                    <td>$320,800</td>
+                                    <td>{{$key+1}}</td>
+                                    <td>{{$item->id_produk}}</td>
+                                    <td>{{$item->id_user}}</td>
+                                    <td>{{$item->nama_penerima}}</td>
+                                    <td>{{$item->alamat}}</td>
+                                    <td>{{$item->metode_pembayaran}}</td>
+                                    <td>{{$item->status}}</td>
+                                    <td>{{$item->note}}</td>
+                                    <td>{{$item->tanggal_transaksi}}</td>
+                                    <td>
+                                        <a href="/edit/transaksi/{{$item->id}}" class="btn btn-primary">Edit</a>
+                                       
+                                        <a href="/delete/transaksi/{{$item->id}}" class="btn btn-danger" onclick="return confirm('Yakin hapus data ini?')">Hapus</a>
+                                    </td>
                                 </tr>
-                                @endfor
+                                @endforeach
+                                    
+                                {{-- @endfor --}}
                             </tbody>
                         </table>
                     </div>

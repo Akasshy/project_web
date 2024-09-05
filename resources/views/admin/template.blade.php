@@ -83,7 +83,10 @@
                         <a href="/banner"><i class="menu-icon fa fa-picture-o"></i>Banner</a>
                     </li>
                     <li class="">
-                        <a href="index.html"><i class="menu-icon fa fa-group"></i>Users</a>
+                        <a href="/dtusers"><i class="menu-icon fa fa-group"></i>Users</a>
+                    </li>
+                    <li class="">
+                        <a href="/logout"><i class="menu-icon fa fa-arrow-circle-left"></i>Logout</a>
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
@@ -129,7 +132,6 @@
             <div class="animated fadeIn">
                
                 @yield('content')
-
             </div>
         </div>
     </div>
