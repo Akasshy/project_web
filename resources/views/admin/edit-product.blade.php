@@ -53,11 +53,11 @@
                     {{-- <input type="text" name="" class="form-control" id=""> --}}
                     {{-- <input type="text" class="form-control" id="productStock" name="kategori" value="{{ $product->stok }}" required> --}}
                     <select class="form-select" id="metode_pembayaran" name="kategori">
-                        <option value="varsity">Varsity</option>
-                        <option value="hoodie">Hodie</option>
-                        <option value="denim">Denim</option>
-                        <option value="kulit">Kulit</option>
-                        <option value="boomber">Boomber</option>
+                        <option value="varsity" {{ $product->kategori == 'varsity' ? 'selected' : '' }}>Varsity</option>
+                        <option value="hoodie" {{ $product->kategori == 'hoodie' ? 'selected' : '' }}>Hodie</option>
+                        <option value="denim" {{ $product->kategori == 'denim' ? 'selected' : '' }}>Denim</option>
+                        <option value="kulit" {{ $product->kategori == 'kulit' ? 'selected' : '' }}>Kulit</option>
+                        <option value="boomber" {{ $product->kategori == 'boomber' ? 'selected' : '' }}>Boomber</option>
                     </select>
                 </div>
                 <button type="submit" class="btn btn-primary">Update Product</button>

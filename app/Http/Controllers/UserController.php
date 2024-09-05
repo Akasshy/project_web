@@ -46,9 +46,11 @@ class UserController extends Controller
         ]);
             return redirect('/');
     }
-    public function profile(){
+    public function profile(Request $request){
         $user = Auth::id();
         $data['profile'] = User::find($user);
+        $data['pesanan'] = Transaksi::find($request->id);
+        // $data['transaksi'] = Transaksi::where('id_user', $user_id)->first();
         return view('profile', $data);
     }
     public function select(){

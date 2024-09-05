@@ -28,7 +28,7 @@
     <div class="row align-items-center" style="gap: 20px">
         <!-- Bagian kiri: Foto Profil -->
         <div class="img col-md-5 text-center mb-3">
-            <img src="https://via.placeholder.com/200" class="profile-picture" alt="Foto Profil">
+            <img src="{{asset('storage/foto_user/'.$profile->foto)}}" class="profile-picture" alt="Foto Profil">
         </div>
 
         <!-- Bagian kanan: Detail Profil -->
@@ -46,15 +46,12 @@
             <!-- Pesanan -->
             <h5>Daftar Pesanan</h5>
             <ul class="list-group">
+                {{-- @foreach ($pesanan as $key => $item)         --}}
                 <li class="list-group-item">
-                    Pesanan #12345 - Produk A
+                    <p>{{$pesanan}}</p>
                 </li>
-                <li class="list-group-item">
-                    Pesanan #12346 - Produk B
-                </li>
-                <li class="list-group-item">
-                    Pesanan #12347 - Produk C
-                </li>
+                {{-- @endforeach --}}
+              
             </ul>
         </div>
     </div>

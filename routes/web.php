@@ -53,6 +53,8 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::post('/add/user',[AdminController::class,'adduser']);
     Route::get('/logout',[UserController::class,'logout']);
     Route::get('/delete/user/{id}',[AdminController::class,'deluser']);
+    Route::get('/edit/user/{id}',[AdminController::class,'edituser']);
+    Route::post('/update/user/{id}',[AdminController::class,'updateuser']);
 
     Route::get('/delete/transaksi/{id}',[AdminController::class,'deltransaksi']);
     Route::get('/edit/transaksi/{id}',[AdminController::class,'edittransaksi']);

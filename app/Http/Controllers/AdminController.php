@@ -8,6 +8,7 @@ use App\Models\Transaksi;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -158,6 +159,36 @@ class AdminController extends Controller
 
     public function deluser(Request $request){
         User::where('id', $request->id)->delete();
+        return redirect('/dtusers');
+    }
+    public function edituser(Request $request){
+        $data['edit'] = User::find($request->id);
+        return view('admin/edituser',$data);
+    }
+
+    public function updateuser(Request $request){
+        $edit = User::where('id',$request->id)->first();
+        if ($request->hasFile('foto')) {
+            # code...
+            $filename = time().'.'.$request->foto->extention(); 
+            $request->foto->move(public_path('storage/foto_user'), $filename);
+            $edit->update([
+                'name' => $request['name'],
+                'email' => $request['email'],
+                // 'password' => $request->password,
+                'role' => $request['role'],
+                'foto' => $filename,
+                // 'password' =>Hash::make($request->password),
+            ]);
+        }else {
+            $edit->update([
+                'name' => $request['name'],
+                'email' => $request['email'],
+                // 'password' => $request->password,
+                'role' => $request['role'],
+                // 'foto' => $filename,
+            ]);
+        }
         return redirect('/dtusers');
     }
 }

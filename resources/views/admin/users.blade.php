@@ -80,7 +80,7 @@
                                     <td>{{$item->role}}</td>
                                     <td><img class="rounded" src="{{asset('storage/foto_user/'.$item->foto)}}" alt=""  style="width: 50px; object-fit: "></td>
                                     <td>
-                                        <a href="/edit/product/{{$item->id}}" class="btn btn-primary">Edit</a>
+                                        <a href="/edit/user/{{$item->id}}" class="btn btn-primary">Edit</a>
                                        
                                         <a href="/delete/user/{{$item->id}}" class="btn btn-danger" onclick="return confirm('Yakin hapus data ini?')">Hapus</a>
                                     </td>
